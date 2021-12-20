@@ -1,0 +1,35 @@
+package application;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import application.entities.Product;
+
+public class Program {
+
+	public static void main(String[] args) {
+
+		String path = "C:\\Users\\renatop.santos\\Desktop\\workspaces\\in.txt";
+
+		List<Product> list = new ArrayList<>();
+
+		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+			String line = br.readLine();
+			line = br.readLine();
+			while (line != null) {
+				String[] fields = line.split(",");
+				Product p = new Product(fields[0], Double.valueOf(fields[1]), Integer.parseInt(fields[2]));
+				list.add(p);
+				line = br.readLine();
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		list.forEach(System.out::println);
+	}
+}

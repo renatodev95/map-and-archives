@@ -13,7 +13,7 @@ public class Program {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		Map<String, Integer> votes = new HashMap<String, Integer>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
 		
 		System.out.println("Enter file full path: ");
 		String path = sc.nextLine();
@@ -22,22 +22,22 @@ public class Program {
 			
 			String line = br.readLine();
 			while (line != null) {
-				String[] dados = line.split(",");
-				String name = dados[0];
-				Integer count = Integer.valueOf(dados[1]);
+				String[] fields = line.split(",");
+				String name = fields[0];
+				Integer votes = Integer.valueOf(fields[1]);
 				
-				if(votes.containsKey(name)) {
-					int votesSoFar = votes.get(name);
-					votes.put(name, votesSoFar + count);
+				if(map.containsKey(name)) {
+					int votesSoFar = map.get(name);
+					map.put(name, votesSoFar + votes);
 				} else {
-					votes.put(name, count);
+					map.put(name, votes);
 				}
 				
 				line = br.readLine();
 			}
 			
-			for (String key : votes.keySet()) {
-				System.out.println("Candidato: " + key + " | Votos Totais: " + votes.get(key));
+			for (String key : map.keySet()) {
+				System.out.println("Candidato: " + key + " | Votos Totais: " + map.get(key));
 			}
 		} catch (IOException e) {
 			System.out.println("Erro: " + e.getMessage());

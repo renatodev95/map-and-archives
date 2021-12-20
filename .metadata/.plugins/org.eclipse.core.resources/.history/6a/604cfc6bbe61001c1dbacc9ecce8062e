@@ -1,0 +1,21 @@
+package application;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import application.entities.Product;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+			
+			System.out.println("PRODUCTS: ");
+			list.forEach(System.out::println);
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
