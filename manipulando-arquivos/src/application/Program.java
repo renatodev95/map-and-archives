@@ -13,7 +13,6 @@ public class Program {
 	public static void main(String[] args) {
 
 		String path = "C:\\Users\\renatop.santos\\Desktop\\workspaces\\in.txt";
-
 		List<Product> list = new ArrayList<>();
 
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
